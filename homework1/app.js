@@ -49,10 +49,9 @@ console.log(difference([1, 2, 3], [100, 2, 1, 10]));
 
 //Task3
 function caseInsensitiveSearch(str1, str2) {
-let search_str = new RegExp(str2, "ig");
-let result = str1.search(search_str);
-
-return (result > 0) ? "Matched" : "Not Matched";  
+  let search_str = new RegExp(str2, "ig");
+  let result = str1.search(search_str);
+  return (result > 0) ? "Matched" : "Not Matched";  
 }
 
 console.log(caseInsensitiveSearch('JavaScript Exercises', 'exercises'));
@@ -61,43 +60,42 @@ console.log(caseInsensitiveSearch('JavaScript Exercises', 'Exercisess'));
 
 //Task4
 let user = {
-name: "Nikita",
-lastName: "Romanovich",
-isProgrammer: true
+  name: "Nikita",
+  lastName: "Romanovich",
+  isProgrammer: true
 }
 
 function transformObject() {
 
-let keysOld = Object.keys(user);
-let valuesOld = Object.values(user);
-let copyObject = {};
+  let keysOld = Object.keys(user);
+  let valuesOld = Object.values(user);
+  let copyObject = {};
 
-for (let i = 0; i < valuesOld.length; i++) {
+  for (let i = 0; i < valuesOld.length; i++) {
     let value = valuesOld[i];
     copyObject[value] = keysOld[i];
-}
-return copyObject;
+  }
+  return copyObject;
 }
 
 console.log(transformObject());
 
 //Task5
 const obj = {
-"1": 323,
-"2": 100,
-"3": 422,
+  "1": 323,
+  "2": 100,
+  "3": 422,
 }
 
 const toNumericPairs = input => {
-    const entries = Object.entries(input);
-    return entries.map(entry => Object.assign(entry, { 0: +entry[0] }));
+  const entries = Object.entries(input);
+  return entries.map(entry => Object.assign(entry, { 0: +entry[0] }));
 }
 
 console.log(toNumericPairs(obj));
 
 //Task6
-function uncamelize(str,separator) {
-  
+function uncamelize(str,separator) {  
   if (typeof (separator) == "undefined") {
     separator = " ";
 }
@@ -111,3 +109,10 @@ console.log(uncamelize('helloWorld'));
 console.log(uncamelize('helloWorld','-'));
 console.log(uncamelize('helloWorld','_')); 
 
+//Task7
+function countSubstring(string,subString){
+  let count = (string.match(new RegExp(subString, 'gi')) || []).length;
+  return count
+}
+
+console.log(countSubstring("Function to get a copy of the object where the keyshave become the values and the values the key","the"));
