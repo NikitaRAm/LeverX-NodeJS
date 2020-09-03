@@ -82,29 +82,32 @@ return copyObject;
 console.log(transformObject());
 
 //Task5
+const obj = {
+"1": 323,
+"2": 100,
+"3": 422,
+}
 
-// const obj = {
-// "1": 323,
-// "2": 100,
-// "3": 422,
-// }
+const toNumericPairs = input => {
+    const entries = Object.entries(input);
+    return entries.map(entry => Object.assign(entry, { 0: +entry[0] }));
+}
 
-// const toNumericPairs = input => {
-//     const entries = Object.entries(input);
-//     return entries.map(entry => Object.assign(entry, { 0: +entry[0] }));
-// }
-
-// console.log(toNumericPairs(obj));
+console.log(toNumericPairs(obj));
 
 //Task6
-function uncamelize(str,n) {
+function uncamelize(str,separator) {
   
+  if (typeof (separator) == "undefined") {
+    separator = " ";
+}
   var str = str.replace(/[A-Z]/g, function (letter) {
-    return n + letter.toLowerCase();
+    return separator + letter.toLowerCase();
   });
   return str.replace(/^_/, "");
 }
 
-console.log(uncamelize('helloWorld',' '));
+console.log(uncamelize('helloWorld'));
 console.log(uncamelize('helloWorld','-'));
 console.log(uncamelize('helloWorld','_')); 
+
