@@ -114,5 +114,13 @@ function countSubstring(string,subString){
   let count = (string.match(new RegExp(subString, 'gi')) || []).length;
   return count
 }
+console.log("Count subString: " + countSubstring("Function to get a copy of the object where the keyshave become the values","the"));
 
-console.log(countSubstring("Function to get a copy of the object where the keyshave become the values and the values the key","the"));
+//Task8
+function flatAndSortArray(array) {
+  let newArr = array.reduce((accumulator, currentValue) =>
+  Array.isArray(currentValue) ? accumulator.concat(flatAndSortArray(currentValue)) : accumulator.concat(currentValue), []);
+  newArr.sort((a,b) => { return a - b; })
+  return newArr;
+}
+console.log(flatAndSortArray([1, 2, 1000, 300, [400, [3, 10, [11, 12]], [1, 2, [3, 4]], 5, 6]]))
