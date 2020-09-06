@@ -1,4 +1,3 @@
-//Task11
 const promiseSeries = pr =>
     pr.reduce((p, next) => p.then(next), Promise.resolve());
 

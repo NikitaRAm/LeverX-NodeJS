@@ -1,13 +1,24 @@
 //Task1
 function fibonacci(max) {
-  let result = [0, 1],
-      val;
+  let result = [0,1]; 
+  
+  if (max <= 0){
+    result = []
+  }
+
   for (let i = 1; result[i] < max; i++) {
-      val = result[i] + result[i - 1];
-      val < max && result.push(val);
+    const val = result[i] + result[i - 1];
+
+    if(val >= max){
+      break;
+    } else {
+     result.push(val);
+    }
   }
   return result
 }
+console.log('Task1');
+console.log(fibonacci(0));
 console.log(fibonacci(8));
 console.log(fibonacci(610));
 
@@ -42,18 +53,18 @@ if (shallow) {
         }
     }
     return r;
-};
+}
+console.log('Task2');
 console.log(difference([1, 2, 3], [100, 2, 1, 10]));
 console.log(difference([1, 2, 3, 4, 5], [1, [2], [3, [[4]]],[5,6]]));
 console.log(difference([1, 2, 3], [100, 2, 1, 10]));
 
-//Task3
+//Task3 
 function caseInsensitiveSearch(str1, str2) {
-  let search_str = new RegExp(str2, "ig");
-  let result = str1.search(search_str);
-  return (result > 0) ? "Matched" : "Not Matched";  
+  return search_str = new RegExp(str2,'ig').test(str1) ? "Matched" : "Not Matched";  
 }
 
+console.log('Task3');
 console.log(caseInsensitiveSearch('JavaScript Exercises', 'exercises'));
 console.log(caseInsensitiveSearch('JavaScript Exercises', 'Exercises'));
 console.log(caseInsensitiveSearch('JavaScript Exercises', 'Exercisess')); 
@@ -77,7 +88,7 @@ function transformObject() {
   }
   return copyObject;
 }
-
+console.log('Task4');
 console.log(transformObject());
 
 //Task5
@@ -92,35 +103,38 @@ const toNumericPairs = input => {
   return entries.map(entry => Object.assign(entry, { 0: +entry[0] }));
 }
 
+console.log('Task5');
 console.log(toNumericPairs(obj));
 
-//Task6
-function uncamelize(str,separator) {  
+//Task6 
+function uncamelize(source,separator) {  
   if (typeof (separator) == "undefined") {
     separator = " ";
-}
-  var str = str.replace(/[A-Z]/g, function (letter) {
+  }
+ let str = source.replace(/[A-Z]/g, letter => {
     return separator + letter.toLowerCase();
   });
   return str.replace(/^_/, "");
 }
 
+console.log('Task6');
 console.log(uncamelize('helloWorld'));
 console.log(uncamelize('helloWorld','-'));
 console.log(uncamelize('helloWorld','_')); 
 
 //Task7
 function countSubstring(string,subString){
-  let count = (string.match(new RegExp(subString, 'gi')) || []).length;
-  return count
+  return string.match(new RegExp(subString, 'gi')) ? subString.length : 0
 }
+console.log('Task7');
 console.log("Count subString: " + countSubstring("Function to get a copy of the object where the keyshave become the values","the"));
 
 //Task8
 function flatAndSortArray(array) {
   let newArr = array.reduce((accumulator, currentValue) =>
   Array.isArray(currentValue) ? accumulator.concat(flatAndSortArray(currentValue)) : accumulator.concat(currentValue), []);
-  newArr.sort((a,b) => { return a - b; })
+  newArr.sort((a,b) => a - b)
   return newArr;
 }
+console.log('Task8');
 console.log(flatAndSortArray([1, 2, 1000, 300, [400, [3, 10, [11, 12]], [1, 2, [3, 4]], 5, 6]]))
